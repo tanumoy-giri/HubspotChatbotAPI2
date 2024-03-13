@@ -8,10 +8,16 @@ from llama_index.core import SimpleDirectoryReader, VectorStoreIndex
 from dotenv import load_dotenv
 load_dotenv()
 
+# Define a directory path using "/" as the separator
+directory_path = "data/"
 
+# Use os.path.join() to create a platform-independent path
+full_path = os.path.join(directory_path, "kbpdf")
 
+# Now, 'full_path' will contain the appropriate directory separator for the current OS
+print("Full path:", full_path)
 # Load documents
-docs = SimpleDirectoryReader("data\kbpdf").load_data()
+docs = SimpleDirectoryReader(full_path).load_data()
 
 # Create index
 index = VectorStoreIndex.from_documents(docs)
